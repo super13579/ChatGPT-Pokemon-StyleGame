@@ -416,7 +416,7 @@ function handleKeyDown(event) {
                   if (playerBag.ancientCoins>= 500){
                     const summonedMonster = summonMonsterByProbability();
                     messageBox.show(`You summoned a ${summonedMonster.name}!`);
-                    // playerBag.removeAncientCoins(500);
+                    playerBag.removeAncientCoins(500);
                     if (playerMonsters.length < 6) {
                         playerMonsters.push(summonedMonster);
                       } else {
