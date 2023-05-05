@@ -83,6 +83,8 @@ class Battle {
     battleAudio.currentTime = 0;
     backgroundAudio.play();
     disableMovement = false;
+    this.activePlayerMonster.animationafterProgress = false;
+    this.activePlayerMonster.animationInProgress = false;
   }
 
   drawMoveSelection(ctx) {
@@ -429,7 +431,7 @@ class Battle {
             this.currentMessage = "You can't escape from trainer battle!!"
             setTimeout(() => {
               this.currentMessage = ''; // Clear the message after a delay
-            }, 2000);
+            }, 1500);
           }
           // Handle 'Escape' action selection
         }
@@ -498,7 +500,7 @@ class Battle {
           setTimeout(() => {
             this.currentMessage = ''; // Clear the message after a delay
             this.end(); 
-          }, 1000);
+          }, 1500);
           
           return;
 
@@ -539,7 +541,7 @@ class Battle {
             setTimeout(() => {
               this.currentMessage = '';
               this.end(); // Clear the message after a delay
-            }, 1500); 
+            }, 2000); 
             return;
           } else {
             this.currentMessage = `${this.activeEnemyMonster.name} is out of health, You earn the ${Math.floor(expGain*1.5)} exp, Trainer call ${this.enemyMonsters[this.enemyMonsterIndex].name}!!`

@@ -37,6 +37,7 @@ class Monster {
         this.evolving = false;
         this.evolutionAnimationCounter = 0;
       } else if (this.evolutionAnimationCounter > this.evolutionAnimationDuration - 500){
+        console.log("check it")
         this.evolve();
         ctx.drawImage(this.image, x, y, width, height);
         this.animationafterProgress = true;
@@ -51,7 +52,8 @@ class Monster {
     if (this.evolveTo !== null && this.level >= this.evolveLevel) {
       const evolvedMonsterData = monsterDictionary[this.evolveTo];
       this.name = evolvedMonsterData.name;
-      this.baseHealth = evolvedMonsterData.baseHealth;
+      this.nowHealth = evolvedMonsterData.baseHealth;
+      this.baseHealth = this.calculateBaseHealth(this.level);
       this.currentHealth = evolvedMonsterData.baseHealth;
       this.skills = this.skills;
       this.image.src = evolvedMonsterData.imagePath;
@@ -64,7 +66,7 @@ class Monster {
   async evolveAnimation() {
     this.evolving = true;
     this.evolutionAnimationCounter = 0;
-    this.evolutionAnimationDuration = 1500; // Adjust this value to control the duration of the animation
+    this.evolutionAnimationDuration = 700; // Adjust this value to control the duration of the animation
     this.animationInProgress = true;
 
     await new Promise((resolve) => {
@@ -96,6 +98,7 @@ class Monster {
     this.level++;
     this.experience = 0;
     this.maxExperience = this.calculateMaxExperience(this.level);
+    this.baseHealth = this.calculateBaseHealth(this.level);
 
     for (const skill of this.learnableSkills) {
       if (skill.level <= this.level) {
