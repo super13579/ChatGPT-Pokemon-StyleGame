@@ -1,5 +1,5 @@
 # ChatGPT-Pokemon-StyleGame
- Using ChatGPT to make pokemon style game 
+Using ChatGPT to make pokemon style game
 
 [Youtube Video](https://www.youtube.com/watch?v=1O0AuRHjrQk&t=45s)
 
@@ -9,7 +9,11 @@ https://startling-duckanoo-cf9843.netlify.app
 Full conversation with GPT-4 : 
 https://dreamy-frangipane-7c5c5a.netlify.app/
 
-Some game sprite reference : 
+Latest update:
+- Added an introductory slideshow describing the legend of the Crystal of Unity.
+- Introduced a new sage NPC who hints at a hidden temple deep in the forest.
+
+Some game sprite reference :
 https://opengameart.org/content/zelda-like-tilesets-and-sprites
 https://opengameart.org/content/epic-fantasy-music
 
