@@ -41,7 +41,8 @@ const slideshowImages = [
   {src: 'assets/images/slider2.png', text: 'But over time, they were forgotten and fell into a deep slumber'},
   {src: 'assets/images/slider3.png', text: 'A recent disturbance in the land has awakened these monsters, causing them to wreak havoc throughout the forest.'},
   {src: 'assets/images/slider4.png', text: 'Young adventurer arriving in a small town located in the heart of a vast and mysterious forest'},
-  // Add more images here
+  {src: 'assets/images/slider4.png', text: 'Guided by a mysterious sage, you seek the legendary Crystal of Unity'},
+  {src: 'assets/images/slider3.png', text: 'Only with this relic can peace between humans and monsters be restored'},
 ];
 
 let CurrentStage = 0;
@@ -768,11 +769,12 @@ const npc3 = new NPC(9,'assets/images/npc-sprite.png', 645, 1430, 30, 50, npc2Ba
 
 const npc4 = new NPC(10,'assets/images/npc-sprite.png', 384, 1400, 30, 50, npc1Battle, 'Let me heal all your monster !!!', 'heal_monsters');
 const luckySummonNPC = new NPC(12, 'assets/images/npc-sprite.png', 497, 1447, 30, 50, npc1Battle , "Welcome to Lucky Summon! Spent 500 coins to get luck !!", 'lucky_summon');
+const sageNPC = new NPC(13, 'assets/images/npc-sprite.png', 720, 1120, 30, 50, npc1Battle, 'Traveler, rumors speak of a hidden temple where the Crystal of Unity rests.', 'dialog');
 const messageBox = new MessageBox(20, 360, 600, 100);
 // const monsterSelectionMessageBox = new MessageBox(20, 360, 600, 100);
 const monsterSelectionMenu = new SelectMenu(messageBox);
 const itemSelectionMenu = new SelectMenu(messageBox);
-let npcs = [npc2, npc3, npc4, luckySummonNPC];
+let npcs = [npc2, npc3, npc4, luckySummonNPC, sageNPC];
 
 
 const playerBag = new Bag();
