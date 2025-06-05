@@ -197,7 +197,7 @@ function handleKeyDown(event) {
         itemSelectionMenu.moveSelection(-1);
       } else if (event.key === 'ArrowDown') {
         itemSelectionMenu.moveSelection(1);
-      } else if (event.key === ' ' & messageBox.text != "You don't have enough money") {
+      } else if (event.key === ' ' && messageBox.text != "You don't have enough money") {
         console.log(playerBag.ancientCoins)
         // onSelect callback should be defined where you called showMonsterSelectionMenu
         if (playerBag.ancientCoins < itemSelectionMenu.monsters[itemSelectionMenu.selectedIndex].cost){
@@ -209,7 +209,7 @@ function handleKeyDown(event) {
 
       } else if (event.key === 'Escape'){
         itemSelectionMenu.hide();
-      } else if (event.key === ' ' & messageBox.text === "You don't have enough money"){
+      } else if (event.key === ' ' && messageBox.text === "You don't have enough money"){
         itemSelectionMenu.updateMessageBox();
       }
       return
