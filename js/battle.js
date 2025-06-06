@@ -25,16 +25,39 @@ class Battle {
     this.isWildBattle = isWildBattle;
     this.itemSelected = 0;
     this.skillEffectProgress = null;
-    this.skillEffectUpdateCounter = 0;
     this.enemySkillSelected = null;
     this.enemySkillEffectProgress = null;
-    this.enemySkillEffectUpdateCounter = 0;
     this.playerMonsterOpacity = 1;
     this.enemyMonsterOpacity = 1;
     this.currentMessage = '';
     this.setNextAlivePlayerMonster();
     this.setNextAliveEnemyMonster();
     this.price = price;
+  }
+
+  update(deltaTime) {
+    if (!this.active) return;
+
+    if (this.transitionProgress < this.transitionDuration) {
+      this.transitionProgress += deltaTime;
+      if (this.transitionProgress > this.transitionDuration) {
+        this.transitionProgress = this.transitionDuration;
+      }
+    }
+
+    if (this.skillEffectProgress !== null) {
+      this.skillEffectProgress += deltaTime / 300;
+      if (this.skillEffectProgress >= 1) {
+        this.skillEffectProgress = null;
+      }
+    }
+
+    if (this.enemySkillEffectProgress !== null) {
+      this.enemySkillEffectProgress += deltaTime / 300;
+      if (this.enemySkillEffectProgress >= 1) {
+        this.enemySkillEffectProgress = null;
+      }
+    }
   }
 
   setNextAlivePlayerMonster() {
