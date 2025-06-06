@@ -601,27 +601,36 @@ function update(deltaTime) {
     PreStage = 5;
   }
 
-  const activeBattle = (wildBattle && wildBattle.active) ||
-    npcs.some((npc) => npc.battle.active);
+  let activeBattle = null;
+  if (wildBattle && wildBattle.active) {
+    activeBattle = wildBattle;
+  }
+  npcs.forEach((npc) => {
+    if (npc.battle.active) {
+      activeBattle = npc.battle;
+    }
+  });
 
 
   if (!activeBattle && !messageBox.visible) {
-      const moveSpeed = 100; // Pixels per second
-      const moveAmount = moveSpeed * (deltaTime / 1000);
-        
-      if (keysPressed['ArrowUp']) {
-        window.player.move("up", moveAmount, window.map);
-      }
-      if (keysPressed['ArrowDown']) {
-        window.player.move("down", moveAmount, window.map);
-      }
-      if (keysPressed['ArrowLeft']) {
-        window.player.move("left", moveAmount, window.map);
-      }
-      if (keysPressed['ArrowRight']) {
-        window.player.move("right", moveAmount, window.map);
-      }
+    const moveSpeed = 100; // Pixels per second
+    const moveAmount = moveSpeed * (deltaTime / 1000);
+
+    if (keysPressed['ArrowUp']) {
+      window.player.move("up", moveAmount, window.map);
     }
+    if (keysPressed['ArrowDown']) {
+      window.player.move("down", moveAmount, window.map);
+    }
+    if (keysPressed['ArrowLeft']) {
+      window.player.move("left", moveAmount, window.map);
+    }
+    if (keysPressed['ArrowRight']) {
+      window.player.move("right", moveAmount, window.map);
+    }
+  } else if (activeBattle) {
+    activeBattle.update(deltaTime);
+  }
 
 }
 
@@ -812,41 +821,6 @@ function draw(ctx) {
       }
 
       if (activeBattle) {
-        // Draw the active battle
-        // Draw the active battle
-        if (activeBattle && activeBattle.skillEffectProgress !== null) {
-          activeBattle.skillEffectUpdateCounter++;
-
-          // Update skillEffectProgress every N frames
-          const updateFrequency = 5; // Adjust this value to control the speed of the effect animation
-
-          if (activeBattle.skillEffectUpdateCounter % updateFrequency === 0) {
-            activeBattle.skillEffectProgress += 0.05;
-          }
-
-          if (activeBattle.skillEffectProgress >= 1) {
-            activeBattle.skillEffectProgress = null;
-            activeBattle.skillEffectUpdateCounter = 0;
-          }
-        }
-
-        // Update the enemy's skill effect progress
-          if (activeBattle.enemySkillEffectProgress !== null) {
-            activeBattle.enemySkillEffectUpdateCounter++;
-
-            // Update enemySkillEffectProgress every N frames
-            const updateFrequency = 5; // Adjust this value to control the speed of the effect animation
-
-            if (activeBattle.enemySkillEffectUpdateCounter % updateFrequency === 0) {
-              activeBattle.enemySkillEffectProgress += 0.05;
-            }
-
-            if (activeBattle.enemySkillEffectProgress >= 1) {
-              activeBattle.enemySkillEffectProgress = null;
-              activeBattle.enemySkillEffectUpdateCounter = 0;
-            }
-          }
-
         activeBattle.draw(ctx);
 
       } else {
